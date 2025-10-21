@@ -1,0 +1,40 @@
+base_settings:
+  audio_codec: nvidia/nemo-nano-codec-22khz-0.6kbps-12.5fps
+  num_readers: 8
+  qsize: 100000
+  OUT_DIR: shards 
+  gzip_level: 1
+  buffer_size: 16777216
+  lines_per_file: 50000
+  load_dataset_num_proc: 20
+
+save_settings:
+  local: train_dataset                        # dataset dir
+  hf_upload: hf_repo/dataset_name             # repo/name
+
+hf_datasets:
+
+  - name: hf_repo/dataset_name
+    sub_name: null                # Dataset subset/configuration (e.g., 'clean', 'other'), or null
+    split: train                  # Dataset split to use ('train', 'test', 'validation', etc.)
+    text_column_name: sentences
+    audio_column_name: audio
+    speaker_column_name: null
+    add_constant:     # or null
+      - key: speaker
+        value: kate
+      - key: lang
+        value: en
+
+  - name: hf_repo/dataset_name
+    sub_name: null                # Dataset subset/configuration (e.g., 'clean', 'other'), or null
+    split: train                  # Dataset split to use ('train', 'test', 'validation', etc.)
+    text_column_name: sentences
+    audio_column_name: audio
+    speaker_column_name: null
+    add_constant:     # or null
+      - key: speaker
+        value: simon
+      - key: lang
+        value: es
+

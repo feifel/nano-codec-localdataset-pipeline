@@ -1,0 +1,9 @@
+omegaconf
+numpy
+datasets==3.6.0
+torch
+librosa
+soundfile
+tqdm
+huggingface_hub
+nemo_toolkit[all]==2.4.0
