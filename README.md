@@ -1,4 +1,7 @@
-# 🎵 Nano Codec Data Pipeline
+# 🎵 NanoCodec Data Pipeline
+
+[![](https://dcbadge.limes.pink/api/server/https://discord.gg/NzP3rjB4SB?style=flat)](https://discord.gg/NzP3rjB4SB) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 
 ```
 ===============================================
@@ -10,19 +13,14 @@
           > ^ <    │
 ===============================================
 ```
-
-[![](https://dcbadge.limes.pink/api/server/https://discord.gg/4fZ4mjD3)](https://discord.gg/4fZ4mjD3)
-
 ## 🎯 What Does This Do?
 
-This pipeline takes your **audio datasets** from HuggingFace and converts them into **tokenized neural codec representations** using NVIDIA's NeMo Nano Codec model.
-
-**Why would you want this?** 🤔
+This pipeline takes your **audio datasets** from HuggingFace and converts them into **tokenized neural codec representations** using NVIDIA NeMo NanoCodec.
 
 If you're training audio generation models (like TTS, voice cloning, or speech models), you need your audio data in a tokenized format. This pipeline:
 
 - 📦 Downloads audio datasets from HuggingFace
-- 🔊 Encodes audio into 4-layer neural codec tokens (super compressed!)
+- 🔊 Encodes audio into 4-layer neural codec tokens (super compressed)
 - 💾 Saves everything in efficient JSONL.gz format
 - ⚡ Uses all your GPUs for maximum speed
 - 🚀 Automatically uploads the final dataset back to HuggingFace
@@ -31,14 +29,13 @@ If you're training audio generation models (like TTS, voice cloning, or speech m
 
 ---
 
-## 🚀 Quick Start (Super Easy!)
+## 🚀 Quick Start
 
-### What You Need
+### Prerequisites
 
-- 🐧 **Linux machine** (Ubuntu/Debian recommended)
-- 🎮 **At least one NVIDIA GPU** (the more, the faster!)
-- 🐍 **Python 3.10+**
-- ☕ **5-10 minutes** for setup
+- **Linux** (Ubuntu/Debian recommended)
+- **At least one NVIDIA GPU** (the more, the faster)
+- **Python 3.10+**
 
 ### Step 1: Run Setup Script
 
@@ -46,13 +43,13 @@ If you're training audio generation models (like TTS, voice cloning, or speech m
 sudo ./setup.sh
 ```
 
-That's it! ✨ The script will:
-- ✅ Check your Python version
-- ✅ Install system dependencies
-- ✅ Create a virtual environment
-- ✅ Install all Python packages
+The script will:
+- Check your Python version
+- Install system dependencies
+- Create a virtual environment
+- Install all Python packages
 
-Grab a coffee, this takes ~5 minutes.
+Setup takes ~5 minutes.
 
 ### Step 2: Activate Virtual Environment
 
@@ -92,11 +89,11 @@ See the **Configuration Guide** below for details!
 python main.py
 ```
 
-🎉 Watch the magic happen! You'll see progress bars for each GPU and reader process.
+You'll see progress bars for each GPU and reader process.
 
 ---
 
-## 📝 Configuration Guide (Easy!)
+## 📝 Configuration Guide
 
 The `config.yaml` file controls everything. Here's what each part does:
 
@@ -209,8 +206,8 @@ If you set `local` or `hf_upload`, you'll get a merged dataset with:
   "nano_layer_2": [234, 567, 890, ...],  // Codec tokens layer 2
   "nano_layer_3": [345, 678, 901, ...],  // Codec tokens layer 3
   "nano_layer_4": [456, 789, 012, ...],  // Codec tokens layer 4
-  "encoded_len": 150,                     // Number of tokens
-  "speaker": "speaker1",                  // Your metadata
+  "encoded_len": 150,                    // Number of tokens
+  "speaker": "speaker1",                 // Your metadata
   "lang": "en"
 }
 ```
@@ -232,11 +229,9 @@ If you're training audio generation models, you need your audio in a **tokenized
 
 ### What Models Need This?
 
-- 🗣️ **Text-to-Speech (TTS)** models
-- 🎤 **Voice cloning** systems
-- 🔄 **Voice conversion** models
-- 🧠 **Language models for speech** (like AudioLM, VALL-E)
-- 🎵 **Music generation** models
+- **Text-to-Speech (TTS)** models
+- **Voice cloning** systems
+- **Voice conversion** models
 
 ### How to Use the Output
 
@@ -284,7 +279,7 @@ hf_datasets:
     # ... config ...
 ```
 
-They'll all be processed sequentially and merged into one final dataset!
+All datasets will be processed sequentially and merged into one final dataset.
 
 ### Adding Metadata
 
@@ -339,7 +334,7 @@ Run: `chmod +x setup.sh`
 
 Get a token from: https://huggingface.co/settings/tokens
 
-Make sure you select "Write" permissions!
+> Make sure you select "Write" permissions
 
 ### Pipeline runs slowly
 
@@ -359,22 +354,9 @@ Make sure you select "Write" permissions!
 
 - 📚 Check the documentation files
 - 🐛 Found a bug? Open an issue
-- [![](https://dcbadge.limes.pink/api/server/https://discord.gg/4fZ4mjD3)](https://discord.gg/4fZ4mjD3)
+- [![](https://dcbadge.limes.pink/api/server/https://discord.gg/NzP3rjB4SB?style=flat)](https://discord.gg/NzP3rjB4SB)
 ---
 
 ## 📜 License
 
-See `LICENSE` file for details.
-
----
-
-```
-===============================================
-          N I N E N I N E S I X  😼
-
-        Happy Audio Processing! 🎵
-===============================================
-```
-[![](https://dcbadge.limes.pink/api/server/https://discord.gg/4fZ4mjD3)](https://discord.gg/4fZ4mjD3)
-
-**Made with ❤️ for the audio ML community**
+Apache 2. See `LICENSE` file for details.
