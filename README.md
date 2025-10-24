@@ -199,7 +199,7 @@ dataset-name-worker01-00000.jsonl.gz
 
 If you set `local` or `hf_upload`, you'll get a merged dataset with:
 
-```json
+```txt
 {
   "text": "Hello world",
   "nano_layer_1": [123, 456, 789, ...],  // Codec tokens layer 1
