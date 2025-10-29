@@ -1,4 +1,4 @@
-from datasets import load_dataset, Audio, disable_progress_bars
+from datasets import load_from_disk, Audio, disable_progress_bars
 from typing import Dict, Any
 from utils.config_manager import DatasetConfig
 
@@ -23,14 +23,13 @@ class DatasetProcessor:
 
         print(f"📦 Loading dataset: {dataset_desc}")
 
-        self.dataset = load_dataset(
-            self.config.name,
-            self.config.sub_name,  # Can be None
-            num_proc=num_proc,
-            split=self.config.split,
-            verification_mode='no_checks',  # Skip verification to reduce logs
-            trust_remote_code=True  # Allow datasets with custom code
-        ).cast_column(self.config.audio_column_name, Audio(self.sample_rate))
+        self.dataset = load_from_disk(self.config.name)               # local path → hf_repo/dataset_name
+        if self.config.split:                                         # keep the split filter if you stored one
+            self.dataset = self.dataset[self.config.split]
+        self.dataset = self.dataset.cast_column(
+            self.config.audio_column_name,
+            Audio(self.sample_rate)
+        )
 
         print(f"  ✅ Loaded {len(self.dataset)} samples from {dataset_desc}")
 
